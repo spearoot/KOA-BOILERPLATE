@@ -22,7 +22,8 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 render(app, {
-    layout : null,
+    // layout : null;
+    layout : 'layouts/template',
     root : path.join(__dirname, '/views'),
     viewExt: 'ejs', cache: false
 });

@@ -4,7 +4,8 @@ exports.home = (ctx,next) => {
     console.log('홈페이지 호출');
 }
 /** 약관, 개인정보처리방침 등 정적 페이지 */
-exports.page = (ctx, next) => {
+exports.page = async(ctx, next) => {
+    let { name } = ctx.params;
     let page = ctx.params.page;
     let content = "이용약관";
     switch (page) {
@@ -14,8 +15,12 @@ exports.page = (ctx, next) => {
         case 'policy':
             content = '개인정보 처리방침';
             break;
+        default:
+            pagename = "오류!";
+            break;
     }
-    ctx.body = `<html>
-    <style "background-color : "gray">
-    </html>`
+    // ctx.body = `<html>
+    // <style "background-color : "gray">
+    // </html>`
+    await ctx.render('index', {pagenmae : pagename});
 }
