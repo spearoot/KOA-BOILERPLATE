@@ -1,5 +1,5 @@
 // /** 전체 피드보기 */
-// const {isNewFeed} = require('../../common/formmatter/date.js');
+const { isNewFeed } = require('../../common/formatter/date');
 
 
 exports.index = (ctx,next) => {

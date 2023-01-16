@@ -6,11 +6,16 @@ const webController = require('./web/controller');
 const apiUserController = require('./api/user/controller');
 const apiFeedController = require('./api/feed/controller');
 const { myLogging } = require('./middleware/logging');
+const { verify } = require('jsonwebtoken');
 
 router.use(myLogging);
 
 router.get('/', webController.home);
 router.get('/page/:page', webController.page);
+
+router.post('/api/user/register', apiUserController.register);
+router.post('/api/user/login', apiUserController.register);
+router.use(verify);
 
 router.get('/api/user/:id', apiUserController.info);
 

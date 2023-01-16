@@ -9,9 +9,9 @@ moment().fromNow();
  * @param {*} date YYYY-MM-DD HH:mm:ss 형식의 문자
  * @return {string}
  */
-exports.dateFromNow = (date) => {
-    moment().fromNow();
-};
+// exports.dateFromNow = (date) => {
+    // moment().fromNow();
+// };
 /**
  * 새 10분을 기준으로 새글인지 판단
  * @author 창근
