@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KET = 'my-secret-key';
 
 /** 해당 id의 회원정보들 */
 exports.info = (ctx,next) => {
@@ -25,7 +24,7 @@ exports.login = async (ctx,next) => {
 
 let generateToken = (payload) => {
     return new Promise((resolve, reject) => {
-        jwt.sign(payload, SECRET_KET, (error,token) => {
+        jwt.sign(payload, process.env.APP_KEY, (error,token) => {
             if(error) { reject(error); }    
             resolve(token);
         })
