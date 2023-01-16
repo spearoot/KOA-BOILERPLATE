@@ -15,5 +15,7 @@ exports.page = (ctx, next) => {
             content = '개인정보 처리방침';
             break;
     }
-    ctx.body = content;
+    ctx.body = `<html>
+    <style "background-color : "gray">
+    </html>`
 }
