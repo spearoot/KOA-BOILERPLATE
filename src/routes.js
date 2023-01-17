@@ -1,14 +1,21 @@
 const Router = require('@koa/router');
 const router = new Router();
+const multer = require('@koa/multer');
+const path = require('path');
+const upload = multer({
+    dest: path.resolve(__dirname,'../', 'storage')
+})
 
-const webController = require('./web/controller');
-
-const apiUserController = require('./api/user/controller');
-const apiFeedController = require('./api/feed/controller');
 const { myLogging } = require('./middleware/logging');
 const { verify } = require('jsonwebtoken');
 
+const webController = require('./web/controller');
+const apiUserController = require('./api/user/controller');
+const apiFeedController = require('./api/feed/controller');
+
 router.use(myLogging);
+
+router.post('/file/upload', upload.single('file'), require('./api/file/controller').upload);
 
 router.get('/', webController.home);
 router.get('/page/:page', webController.page);
