@@ -12,6 +12,12 @@ exports.register = async (email, password, name) => {
     VALUES (?,?,?)`;
     return await pool(query, [email, password, name]);
 }
+/**
+ * 이메일
+ * @param {string} email 메일(아이디)
+ * @param {string} password 비밀번호
+ * @returns 
+ */
 exports.login = async (email, password) => {
     const query = `SELECT * FROM user WHERE
     email = ? AND password = ?`;
